@@ -10,7 +10,7 @@ typedef struct Person {
 
 Person* create_person(const char *name, int age){
     Person *myself =malloc(sizeof(struct Person));
-    *myself->name=strcpy(myself->name,"Sameer");
+    strcpy(myself->name,"Sameer");
     myself->age=19;
     struct Person *father=NULL;
     struct Person *mother=NULL;
