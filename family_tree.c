@@ -24,6 +24,17 @@ void read_person_info(const char *role, char *name_out, int *age_out){
     scanf("%d",*age_out);
 }
 
+void print_family_relationships(const Person *me){
+    printf(" 1.Myself\n");
+    printf("My name is %s | age =%d", me->name, me->age);
+    printf("2.My Parents \n");
+    printf("Mother %s | age= %d \n", me->mother , me->mother->age);
+    printf("Father %s | age= %d \n", me->father , me->father->age);
+    printf(" 3.My Paternal-Parents \n");
+    printf("Mother %s | age= %d \n", me->father->father , me->father->father->age);
+    printf("Father %s | age= %d \n", me->father->mother , me->father->mother->age);
+    printf(" 4.My Maternal-Parents \n");
+}
 int main() {
     Person *myself;
     Person *father;
