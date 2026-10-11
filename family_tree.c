@@ -25,7 +25,24 @@ void read_person_info(const char *role, char *name_out, int *age_out){
 }
 
 int main() {
+    Person *myself;
+    Person *father;
+    Person *mother;
+    Person *maternal_father;
+    Person *maternal_mother;
+    Person *paternal_father;
+    Person *paternal_mother;
 
+    myself->father = father;
+    myself->mother= mother;
+    father->father= paternal_father;
+    father->mother=paternal_mother;
+    mother->father=maternal_father;
+    mother->mother=maternal_mother;
+    maternal_mother->mother=NULL;
+    maternal_father->mother=NULL;
+    paternal_father->father=NULL;
+    paternal_father->mother=NULL;
     
     return 0;
 }
