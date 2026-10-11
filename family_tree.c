@@ -17,6 +17,13 @@ Person* create_person(const char *name, int age){
     return myself;
     }
 
+void read_person_info(const char *role, char *name_out, int *age_out){
+    printf("Enter the name of the paternal/Maternal grandfather : ");
+    scanf("%s",name_out);
+    printf("Enter the name of the paternal/Maternal grandfather : ");
+    scanf("%d",*age_out);
+}
+
 int main() {
 
     
