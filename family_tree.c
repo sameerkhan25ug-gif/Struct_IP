@@ -8,22 +8,26 @@ typedef struct Person {
     struct Person *mother;
 } Person;
 
-// Person* create_person(const char *name, int age){
-//     Person *myself =malloc(sizeof(struct Person));
-//     strcpy(myself->name,"Sameer");
-//     myself->age=19;
-//     struct Person *father=NULL;
-//     struct Person *mother=NULL;
-//     return myself;
-//     }
 Person* create_person(const char *name, int age){
-    printf("Enter the name of person : ");
-    char entered_name;
+    Person *ptr =(Person*) malloc(sizeof(struct Person));
+    char *entered_name ;
+    printf("Enter the name of peron : ");
     scanf("%s",&entered_name);
-    printf("Enter the age : ");
-    scanf("%d",&age);
-    
+    strcpy(ptr->name,entered_name);
+    printf("Enter the age of person:" );
+    scanf("%d", &age);
+    struct Person *father=NULL;
+    struct Person *mother=NULL;
+    return ptr;
     }
+// Person* create_person(const char *name, int age){
+//     printf("Enter the name of person : ");
+//     char entered_name;
+//     scanf("%s",&entered_name);
+//     printf("Enter the age : ");
+//     scanf("%d",&age);
+    
+//     }
 
 void read_person_info(const char *role, char *name_out, int *age_out){
     printf("Enter the name of the paternal/Maternal grandfather : ");
