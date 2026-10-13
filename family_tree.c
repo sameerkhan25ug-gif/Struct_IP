@@ -77,7 +77,7 @@ int main() {
 
     link_parents(myself , father , mother );
     link_parents(father , paternal_father , paternal_mother);
-    link_parents(mother , maternal_mother , maternal_father);
+    link_parents(mother ,  maternal_father, maternal_mother);
     print_family_relationships(myself);
     // myself->father = father;
     // myself->mother= mother;
