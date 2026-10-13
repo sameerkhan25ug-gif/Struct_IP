@@ -10,12 +10,14 @@ typedef struct Person {
 
 Person* create_person(const char *name, int age){
     Person *ptr =(Person*) malloc(sizeof(struct Person));
-    char *entered_name ;
-    printf("Enter the name of peron : ");
-    scanf("%s",&entered_name);
-    strcpy(ptr->name,entered_name);
-    printf("Enter the age of person:" );
-    scanf("%d", &age);
+    if( ptr==NULL){
+        printf("Memory is not allocated kindky try again ");
+        break; //Assuming we dont need to run the further code itself if allocation fails 
+        //return 1;// We have already specify return type as struct so returning 1 is not possible 
+    }
+    strcpy(ptr->name, name) ; // Returning an error - cannot alocate this way becayse it array not string pointer .
+    ptr->age= age ;
+    strcpy(ptr->name,name);
     struct Person *father=NULL;
     struct Person *mother=NULL;
     return ptr;
@@ -25,8 +27,7 @@ Person* create_person(const char *name, int age){
 //     char entered_name;
 //     scanf("%s",&entered_name);
 //     printf("Enter the age : ");
-//     scanf("%d",&age);
-    
+//     scanf("%d",&age);   
 //     }
 
 void read_person_info(const char *role, char *name_out, int *age_out){
@@ -54,19 +55,30 @@ void print_family_relationships(const Person *me){
     printf("Mother %s | age= %d \n", me->father->father , me->father->father->age);
     printf("Father %s | age= %d \n", me->father->mother , me->father->mother->age);
     printf(" 4.My Maternal-Parents \n");
+    printf("Mother %s | age= %d \n", me->mother->father , me->mother->father->age);
+    printf("Father %s | age= %d \n", me->mother->mother , me->mother->mother->age);
+
 }
 int main() {
     Person *myself;
+    myself=create_person("Sameer",20);
     Person *father;
+    father=create_person("Vasim", 49);
     Person *mother;
+    mother=create_person("Nafisa" , 45);
     Person *maternal_father;
+    maternal_father=("Najar", 80 );
     Person *maternal_mother;
+    maternal_mother=("Billo", 78);
     Person *paternal_father;
+    paternal_father=("Rahis", 85);
     Person *paternal_mother;
+    paternal_mother=("Mariyam", 82);
 
     link_parents(myself , father , mother );
     link_parents(father , paternal_father , paternal_mother);
     link_parents(mother , maternal_mother , maternal_father);
+    print_family_relationships(myself);
     // myself->father = father;
     // myself->mother= mother;
     // father->father= paternal_father;
