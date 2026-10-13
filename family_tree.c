@@ -10,11 +10,11 @@ typedef struct Person {
 
 Person* create_person(const char *name, int age){
     Person *ptr =(Person*) malloc(sizeof(struct Person));
-    if( ptr==NULL){
-        printf("Memory is not allocated kindky try again ");
-        break; //Assuming we dont need to run the further code itself if allocation fails 
-        //return 1;// We have already specify return type as struct so returning 1 is not possible 
-    }
+    // if( ptr==NULL){
+    //     printf("Memory is not allocated kindky try again ");
+    //     break; //Assuming we dont need to run the further code itself if allocation fails 
+    //     //return 1;// We have already specify return type as struct so returning 1 is not possible 
+    // }
     strcpy(ptr->name, name) ; // Returning an error - cannot alocate this way becayse it array not string pointer .
     ptr->age= age ;
     strcpy(ptr->name,name);
@@ -67,13 +67,13 @@ int main() {
     Person *mother;
     mother=create_person("Nafisa" , 45);
     Person *maternal_father;
-    maternal_father=("Najar", 80 );
+    maternal_father=create_person("Najar", 80 );
     Person *maternal_mother;
-    maternal_mother=("Billo", 78);
+    maternal_mother=create_person("Billo", 78);
     Person *paternal_father;
-    paternal_father=("Rahis", 85);
+    paternal_father=create_person("Rahis", 85);
     Person *paternal_mother;
-    paternal_mother=("Mariyam", 82);
+    paternal_mother=create_person("Mariyam", 82);
 
     link_parents(myself , father , mother );
     link_parents(father , paternal_father , paternal_mother);
@@ -85,10 +85,10 @@ int main() {
     // father->mother=paternal_mother;
     // mother->father=maternal_father;
     // mother->mother=maternal_mother;
-    maternal_mother->mother=NULL;
-    maternal_father->mother=NULL;
-    paternal_father->father=NULL;
-    paternal_father->mother=NULL;
+    // maternal_mother->mother=NULL;
+    // maternal_father->mother=NULL;
+    // paternal_father->father=NULL;
+    // paternal_father->mother=NULL;
     
     return 0;
 }
