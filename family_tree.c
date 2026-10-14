@@ -31,8 +31,9 @@ Person* create_person(const char *name, int age){
 //     }
 
 void read_person_info(const char *role, char *name_out, int *age_out){
-    printf("Enter the name of the paternal/Maternal grandfather : ");
-    scanf("%s",name_out);
+    printf("The peron is %s", role);
+    printf("Enter the name of the name of the above mentioned person : ");
+    scanf("%s",*name_out);
     printf("Enter the name of the paternal/Maternal grandfather : ");
     scanf("%d",*age_out);
 }
@@ -68,25 +69,33 @@ void free_family_tree(Person *people[], int count){
         }
     }
 int main() {
-    Person *myself;
-    myself=create_person("Sameer",20);
-    Person *father;
-    father=create_person("Vasim", 49);
-    Person *mother;
-    mother=create_person("Nafisa" , 45);
-    Person *maternal_father;
-    maternal_father=create_person("Najar", 80 );
-    Person *maternal_mother;
-    maternal_mother=create_person("Billo", 78);
-    Person *paternal_father;
-    paternal_father=create_person("Rahis", 85);
-    Person *paternal_mother;
-    paternal_mother=create_person("Mariyam", 82);
 
-    link_parents(myself , father , mother );
-    link_parents(father , paternal_father , paternal_mother);
-    link_parents(mother ,  maternal_father, maternal_mother);
-    print_family_relationships(myself);
+    Person *myself;
+    // myself=create_person("Sameer",20);
+    Person *father;
+    // father=create_person("Vasim", 49);
+    Person *mother;
+    // mother=create_person("Nafisa" , 45);
+    Person *maternal_father;
+    // maternal_father=create_person("Najar", 80 );
+    Person *maternal_mother;
+    // maternal_mother=create_person("Billo", 78);
+    Person *paternal_father;
+    // paternal_father=create_person("Rahis", 85);
+    Person *paternal_mother;
+    // paternal_mother=create_person("Mariyam", 82);
+    Person *roles_arr[7]={ myself ,father , mother , paternal_father , paternal_mother , maternal_father , maternal_mother };
+    for (int i=1 ; i <=7 ; i++ ){
+        char *name;
+        int age;
+        read_person_info(roles_arr[i], name , &age  );
+        roles_arr[i]=create_person(name , age );
+
+    }
+    // link_parents(myself , father , mother );
+    // link_parents(father , paternal_father , paternal_mother);
+    // link_parents(mother ,  maternal_father, maternal_mother);
+    // print_family_relationships(myself);
     // myself->father = father;
     // myself->mother= mother;
     // father->father= paternal_father;
