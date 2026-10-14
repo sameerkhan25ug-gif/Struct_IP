@@ -12,36 +12,24 @@ Person* create_person(const char *name, int age){
     Person *ptr =(Person*) malloc(sizeof(struct Person));
     if( ptr==NULL){
         printf("Memory is not allocated kindky try again ");
-        // break; //Assuming we dont need to run the further code itself if allocation fails 
-        return NULL;// We have already specify return type as struct so returning 1 is not possible 
+        return NULL;
     }
-    strcpy(ptr->name, name) ; // Returning an error - cannot alocate this way becayse it array not string pointer .
+    strcpy(ptr->name, name) ;
     ptr->age= age ;
     strcpy(ptr->name,name);
     struct Person *father=NULL;
     struct Person *mother=NULL;
     return ptr;
     }
-// Person* create_person(const char *name, int age){
-//     printf("Enter the name of person : ");
-//     char entered_name;
-//     scanf("%s",&entered_name);
-//     printf("Enter the age : ");
-//     scanf("%d",&age);   
-//     }
 
 void read_person_info(const char *role, char *name_out, int *age_out){
-    printf("The peron is %s", role);
-    printf("Enter the name of the name of the above mentioned person : ");
-    scanf("%s",*name_out);
-    printf("Enter the name of the paternal/Maternal grandfather : ");
-    scanf("%d",*age_out);
+    printf("The peron is %s\n", role);
+    printf("Enter the name of the %s : ",role);
+    scanf("%s",name_out);
+    printf("Enter the age of the %s : ",role);
+    scanf("%d",age_out);
 }
-// void link_parents(Person *myself, Person *father, Person *mother){
-//     myself->father = father;
-//     myself->mother= mother;
 
-// }
 void link_parents(Person *child, Person *father, Person *mother){
     child->father = father;
     child->mother= mother;
@@ -71,41 +59,31 @@ void free_family_tree(Person *people[], int count){
 int main() {
 
     Person *myself;
-    // myself=create_person("Sameer",20);
     Person *father;
-    // father=create_person("Vasim", 49);
     Person *mother;
-    // mother=create_person("Nafisa" , 45);
     Person *maternal_father;
-    // maternal_father=create_person("Najar", 80 );
     Person *maternal_mother;
-    // maternal_mother=create_person("Billo", 78);
     Person *paternal_father;
-    // paternal_father=create_person("Rahis", 85);
     Person *paternal_mother;
-    // paternal_mother=create_person("Mariyam", 82);
+
     Person *roles_arr[7]={ myself ,father , mother , paternal_father , paternal_mother , maternal_father , maternal_mother };
-    for (int i=1 ; i <=7 ; i++ ){
+
+    char *myname[] = {"Yourself" , "Father" , "Mother", "Paternal-father" , "Paternal-mother" , "Maternal-fathers" , "Maternal_Mothers"  };
+    
+    for (int i=0 ; i <7 ; i++ ){
         char *name;
         int age;
-        read_person_info(roles_arr[i], name , &age  );
+        read_person_info(myname[i], name , &age  );
         roles_arr[i]=create_person(name , age );
 
     }
-    // link_parents(myself , father , mother );
-    // link_parents(father , paternal_father , paternal_mother);
-    // link_parents(mother ,  maternal_father, maternal_mother);
-    // print_family_relationships(myself);
-    // myself->father = father;
-    // myself->mother= mother;
-    // father->father= paternal_father;
-    // father->mother=paternal_mother;
-    // mother->father=maternal_father;
-    // mother->mother=maternal_mother;
-    // maternal_mother->mother=NULL;
-    // maternal_father->mother=NULL;
-    // paternal_father->father=NULL;
-    // paternal_father->mother=NULL;
+
+    link_parents(myself , father , mother );
+    link_parents(father , paternal_father , paternal_mother);
+    link_parents(mother ,  maternal_father, maternal_mother);
+    
+    print_family_relationships(myself);
+    
     Person *arr[7]={myself , mother , father , maternal_father , maternal_mother , paternal_father , paternal_mother};
     free_family_tree(arr , 7);
 
