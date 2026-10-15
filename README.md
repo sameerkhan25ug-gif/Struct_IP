@@ -1,5 +1,52 @@
 # Family tree project
-This repo consist of the my course Imperative Programming's Assignment
+
+**_Before we start I want to show how does the input and output will look for the project that I have made_**
+
+**This below piece shows what the output will be for particular input**
+```
+The person is Yourself
+Enter the name of Yourself : Varsha
+Enter the age of Yourself : 20
+The person is Father
+Enter the name of Father : Pushkar
+Enter the age of Father : 40
+The person is Mother
+Enter the name of Mother : Mahima
+Enter the age of Mother : 38
+The person is Paternal-father
+Enter the name of Paternal-father : Rajendra
+Enter the age of Paternal-father : 60
+The person is Paternal-mother
+Enter the name of Paternal-mother : Manisha
+Enter the age of Paternal-mother : 57
+The person is Maternal-fathers
+Enter the name of Maternal-fathers : Jagdish
+Enter the age of Maternal-fathers : 63
+The person is Maternal_Mothers
+Enter the name of Maternal_Mothers : Shruti
+Enter the age of Maternal_Mothers : 60
+
+//**Till here we had input from user.**( This line wont get printed , just to make destinction)
+
+ 1.All about your family tree !
+Your name is:  Varsha | Your age is=20
+2.Your Parents 
+Your Father name is: Pushkar | His age is = 40 
+Your Mother  name is: Mahima | Her age is = 38 
+ 3.Your Paternal-Parents 
+Your paternal grand-father's name is : Rajendra |His age is = 60 
+Your Paternal Grand-mother's name is : Manisha |Her age is = 57 
+ 4.Your Maternal-Parents 
+Your maternal grand-father's nameis :  Jagdish |His age is = 63 
+Your maternal grand-mother's name is :  Shruti |Her age is = 60 
+
+//*This is the output for the input*( This line wont get printed , just to make destinction)
+```
+<img width="338" height="385" alt="image" src="https://github.com/user-attachments/assets/ecb6039f-edb9-4d77-83f8-ac2437359cd7" />
+
+_Lets have a overview of my project_
+
+This repo consist of my course Imperative Programming's Assignment.
 
 The whole project revolves around taking the input from the user about his ownself , his parents (i.e mother and father) , his paternal grandparents , maternal grandparents and diaplaying the output in proper sequence, which ultimatey forms the family tree for **3 Genreation**.
 
@@ -11,13 +58,13 @@ All the function that we have define are designed to do some specific task that 
 
 ```
 typedef struct Person { 
-    char name[50]; // Its specifies that a struct contain a name maximum characters that can be entered will 50 
-    int age;// Its specifies that a struct contain a age 
+    char name[50]; // Its specifies that a struct contain a variable name in which maximum characters that can be entered will 50 
+    int age;// Its specifies that a struct contain a variable age of type int
     struct Person *father; //This specifies that the struct itself will consists of another struct
     struct Person *mother;//This specifies that the struct itself will consists of another struct
 } Person; // Typedef is use to declare alias which ultimately reduces our effort instead of calling whole struct Person 'some instance of it ' we can directly call that struct by just calling by it alias that is Person.
 ```
-Moreover, here we have define the how the struct Person structure is.
+Moreover, here we have define the how the **struct Person** structure is.
 
 The next function is 
 ```
@@ -31,7 +78,7 @@ Person* create_person(const char *name, int age){
     ptr->age= age ; //Its sets the value for person age 
     struct Person *father=NULL;//This sets mother pointer for particular instance to NULL
     struct Person *mother=NULL;//This sets father pointers for particular instance to NULL.
-    return ptr; //Here we are defing the return type of the function. Here it expects returns type to be of pointer.
+    return ptr; //Here we are defing the return type of the function. Here it expects returns type to be of pointer to struct.
     }
 ```
 **_This is very important function which assigns the memory as per defination of struct , sets name and age , and points to other structs._**
@@ -73,7 +120,7 @@ void print_family_relationships(const Person *me){
 
 }
 ```
-**_This is the function that will help us to prints all the inputs. Moreover here we traversing from struct to other struct._**
+**_This is the function that will help us to prints all the inputs. Moreover here we traversing from struct to other struct for a particular variable._**
 ```
 void free_family_tree(Person *people[], int count){
         for ( int i=1 ; i <count; i++){
@@ -82,7 +129,85 @@ void free_family_tree(Person *people[], int count){
         }
     }
 ```
-We know we allocated memoery for every instances of the struct through malloc after and this is **_dynamic memory_** allocation which means it wont get free until we free it . So what this function does is that **_it runs a loop for all seven people and frees a memory of each instance of struct_**.
+We know we allocated memory for every instances of the struct through malloc after and this is **_dynamic memory_** allocation which means it wont get free until we free it . So what this function does is that **_it runs a loop for all seven people and frees a memory of each instance of struct_**.
+
+
+**Let see how we have define and called function in main**
+```
+    Person *myself;
+    Person *father;
+    Person *mother;
+    Person *paternal_father;
+    Person *paternal_mother;
+    Person *maternal_father;
+    Person *maternal_mother;
+```
+
+These are the struct pointer that we have define/instances.
+
+
+```
+   char *myname[] = {"Yourself" , "Father" , "Mother", "Paternal-father" , "Paternal-mother" , "Maternal-fathers" ,"Maternal_Mothers"  };
+    
+    char name0[100];
+        int age0;
+        int i=0;
+        read_person_info(myname[i], name0 , &age0  );
+        myself=create_person(name0 , age0 );
+        
+    
+        i++;
+        char name1[100];
+        int age1;
+        read_person_info(myname[i], name1 , &age1  );
+        father=create_person(name1 , age1 );
+         i++;
+        char name2[100];
+        int age2;
+        read_person_info(myname[i], name2 , &age2  );
+        mother=create_person(name2 , age2 );
+        i++;
+        char name3[100];
+        int age3;
+        read_person_info(myname[i], name3 , &age3  );
+        paternal_father=create_person(name3 , age3 );
+        i++;
+        char name4[100];
+        int age4;
+        read_person_info(myname[i], name4 , &age4  );
+        paternal_mother=create_person(name4 , age4 );
+        i++;
+        char name5[100];
+        int age5;
+        read_person_info(myname[i], name5 , &age5  );
+        maternal_father=create_person(name5 , age5 );
+        i++;
+        char name6[100];
+        int age6;
+        read_person_info(myname[i], name6 , &age6  );
+        maternal_mother=create_person(name6 , age6 );
+```
+
+**I have create a array which contain all possible relationships so while calling the function read_person_info() we can ask user to enter the information for particular person.**
+
+**Once we get the output from the function read_person_info we will use it as input for calling function create_person() . Moreover we assign the allocated memory to every instances that we have created.**
+
+
+```
+    link_parents(myself , father , mother );
+    link_parents(father , paternal_father , paternal_mother);
+    link_parents(mother , maternal_father, maternal_mother);
+```
+**We are calling function link_parents what it does is that is link children to their parents.**
+```
+print_family_relationships(myself);
+```
+**We willl be printing the whole family tree through calling function print_family. Moreover as we discussed that we will be traversing through struct. So here we will be traversing from myself to all other relations**
+```
+Person *arr[7]={myself , mother , father , maternal_father , maternal_mother , paternal_father , paternal_mother};
+    free_family_tree(arr , 7);
+```
+**This function free_family will free all the dynamic memory that has been allocated.**
 
 
 
