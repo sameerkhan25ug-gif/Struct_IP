@@ -16,14 +16,13 @@ Person* create_person(const char *name, int age){
     }
     strcpy(ptr->name, name) ;
     ptr->age= age ;
-    strcpy(ptr->name,name);
     struct Person *father=NULL;
     struct Person *mother=NULL;
     return ptr;
     }
 
 void read_person_info(const char *role, char *name_out, int *age_out){
-    printf("The peron is %s\n", role);
+    printf("The person is %s\n", role);
     printf("Enter the name of the %s : ",role);
     scanf("%s",name_out);
     printf("Enter the age of the %s : ",role);
@@ -35,18 +34,17 @@ void link_parents(Person *child, Person *father, Person *mother){
     child->mother= mother;
 }
 void print_family_relationships(const Person *me){
-    printf(" 1.Myself\n");
-    printf("My name is %s | age =%d", me->name, me->age);
-    printf("\n");
-    printf("2.My Parents \n");
-    printf("My Father is: %s | His age is = %d \n", me->father , me->father->age);
-    printf("My Mother is: %s | Her age is = %d \n", me->mother , me->mother->age);
-    printf(" 3.My Paternal-Parents \n");
-    printf("My paternal grand-father %s |His age is = %d \n", me->father->father , me->father->father->age);
-    printf("My Paternal Grand-mother is : %s |Her age is = %d \n", me->father->mother , me->father->mother->age);
-    printf(" 4.My Maternal-Parents \n");
-    printf("My maternal grand-father is :  %s |His age is = %d \n", me->mother->father , me->mother->father->age);
-    printf("My maternal grand-mother is :  %s |Her age is = %d \n", me->mother->mother , me->mother->mother->age);
+    printf(" 1.All about your family tree !\n");
+    printf("Your name is:  %s | Your age is=%d\n", me->name, me->age);
+    printf("2.Your Parents \n");
+    printf("Your Father name is: %s | His age is = %d \n", me->father , me->father->age);
+    printf("Your Mother  name is: %s | Her age is = %d \n", me->mother , me->mother->age);
+    printf(" 3.Your Paternal-Parents \n");
+    printf("Your paternal grand-father's name is : %s |His age is = %d \n", me->father->father , me->father->father->age);
+    printf("Your Paternal Grand-mother's name is : %s |Her age is = %d \n", me->father->mother , me->father->mother->age);
+    printf(" 4.Your Maternal-Parents \n");
+    printf("Your maternal grand-father's nameis :  %s |His age is = %d \n", me->mother->father , me->mother->father->age);
+    printf("Your maternal grand-mother's name is :  %s |Her age is = %d \n", me->mother->mother , me->mother->mother->age);
 
 }
 
@@ -67,22 +65,13 @@ int main() {
     Person *maternal_mother;
     
 
-    Person *roles_arr[7]={ myself ,father , mother , paternal_father , paternal_mother , maternal_father , maternal_mother };
-
+   
     char *myname[] = {"Yourself" , "Father" , "Mother", "Paternal-father" , "Paternal-mother" , "Maternal-fathers" , "Maternal_Mothers"  };
     
-    // for (int i=0 ; i <7 ; i++ ){
-    //     char *name;
-    //     int age;
-    //     read_person_info(myname[i], name , &age  );
-    //     roles_arr[i]=create_person(name , age );
-
-    // }
     char name0[100];
         int age0;
         int i=0;
         read_person_info(myname[i], name0 , &age0  );
-        printf("%p",myself);
         myself=create_person(name0 , age0 );
         
     
