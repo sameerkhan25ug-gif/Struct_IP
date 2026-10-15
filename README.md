@@ -209,6 +209,16 @@ Person *arr[7]={myself , mother , father , maternal_father , maternal_mother , p
 ```
 **This function free_family will free all the dynamic memory that has been allocated.**
 
+Last thing that we can do is that we can use valgrind that will ensure that there is no memory leaks. Since I was doing it on online C compiler I was unable to use valgrind command. Also in most of the cases when we are doing **free** there shouldn't be any memory leaks.
+
+
+However what we do is that when we want to avoid and assure that there is no memory leak what we do is that we compile our code with -g . 
+Then we will get by default ./a.out file. The we do : 
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./a.out
+
+(**refered to online command that sir has provided not really used it but have idea about it**) 
+
 
 
 
