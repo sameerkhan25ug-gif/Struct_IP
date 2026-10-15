@@ -11,7 +11,7 @@ typedef struct Person {
 Person* create_person(const char *name, int age){
     Person *ptr =(Person*) malloc(sizeof(struct Person));
     if( ptr==NULL){
-        printf("Memory is not allocated kindky try again ");
+        printf("Memory is not allocated kindly try again ");
         return NULL;
     }
     strcpy(ptr->name, name) ;
@@ -23,9 +23,9 @@ Person* create_person(const char *name, int age){
 
 void read_person_info(const char *role, char *name_out, int *age_out){
     printf("The person is %s\n", role);
-    printf("Enter the name of the %s : ",role);
+    printf("Enter the name of %s : ",role);
     scanf("%s",name_out);
-    printf("Enter the age of the %s : ",role);
+    printf("Enter the age of %s : ",role);
     scanf("%d",age_out);
 }
 
@@ -51,7 +51,6 @@ void print_family_relationships(const Person *me){
 void free_family_tree(Person *people[], int count){
         for ( int i=1 ; i <count; i++){
             free(people[i]);
-            printf("free %d",i);
         }
     }
 int main() {
