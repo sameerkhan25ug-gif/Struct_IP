@@ -47,7 +47,6 @@ void print_family_relationships(const Person *me){
     printf(" 4.My Maternal-Parents \n");
     printf("My maternal grand-father is :  %s |His age is = %d \n", me->mother->father , me->mother->father->age);
     printf("My maternal grand-mother is :  %s |Her age is = %d \n", me->mother->mother , me->mother->mother->age);
-    
 
 }
 
