@@ -42,8 +42,8 @@ void print_family_relationships(const Person *me){
     printf("My Father is: %s | His age is = %d \n", me->father , me->father->age);
     printf("My Mother is: %s | Her age is = %d \n", me->mother , me->mother->age);
     printf(" 3.My Paternal-Parents \n");
-    printf("My paternal grand-father %s |His age is = %d \n", me->father->mother , me->father->mother->age);
-    printf("My Paternal Grand-mother is : %s |Her age is = %d \n", me->father->father , me->father->father->age);
+    printf("My paternal grand-father %s |His age is = %d \n", me->father->father , me->father->father->age);
+    printf("My Paternal Grand-mother is : %s |Her age is = %d \n", me->father->mother , me->father->mother->age);
     printf(" 4.My Maternal-Parents \n");
     printf("My maternal grand-father is :  %s |His age is = %d \n", me->mother->father , me->mother->father->age);
     printf("My maternal grand-mother is :  %s |Her age is = %d \n", me->mother->mother , me->mother->mother->age);
@@ -53,6 +53,7 @@ void print_family_relationships(const Person *me){
 void free_family_tree(Person *people[], int count){
         for ( int i=1 ; i <count; i++){
             free(people[i]);
+            printf("free %d",i);
         }
     }
 int main() {
@@ -83,7 +84,7 @@ int main() {
         read_person_info(myname[i], name0 , &age0  );
         printf("%p",myself);
         myself=create_person(name0 , age0 );
-        printf("%p",myself);
+        
     
         i++;
         char name1[100];
