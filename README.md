@@ -1,4 +1,4 @@
-# Struct_IP
+# Family tree project
 This repo consist of the my course Imperative Programming's Assignment
 
 The whole project revolves around taking the input from the user about his ownself , his parents (i.e mother and father) , his paternal grandparents , maternal grandparents and diaplaying the output in proper sequence, which ultimatey forms the family tree for **3 Genreation**.
