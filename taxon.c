@@ -69,7 +69,7 @@ void print_taxonomy(Taxon *family){
 void free_tree(Taxon *all_taxa[], int total_count){
     for ( int i=0 ; i < total_count ; i++){
         free(all_taxa[i]);
-        printf("Freed %d",i);
+        printf("Freed %d\n",i);
     }
 }
 
@@ -98,6 +98,7 @@ int main() {
     read_taxon_info(elements[i],genera1 , &lifespan_G1 );
     Genera1=create_taxon(genera1 , lifespan_G1);
      printf("Memory allocated is %p\n",Genera1);
+     link_parent(family ,Genera1 );
 
     i++;
     char genera2[100];
@@ -105,6 +106,7 @@ int main() {
     read_taxon_info(elements[i],genera2 , &lifespan_G2 );
     Genera2=create_taxon(genera1 , lifespan_G2);
     printf("Memory allocated is %p\n",Genera2);
+    link_parent(Genera1 ,Genera2 );
     
     i++;
     char Species1[100];
@@ -112,6 +114,7 @@ int main() {
     read_taxon_info(elements[i], Species1 , &lifespan_S1 );
     species1=create_taxon(Species1 , lifespan_S1);
     printf("Memory allocated is %p\n",Species1);
+    link_parent(Genera2 ,species1 );
     
     
     
@@ -121,6 +124,7 @@ int main() {
     read_taxon_info(elements[i], Species2 , &lifespan_S2);
     species2=create_taxon(Species2 , lifespan_S2);
     printf("Memory allocated is %p\n",Species2);
+    link_parent(species1 ,species2 );
     
     
     
@@ -131,32 +135,22 @@ int main() {
     read_taxon_info(elements[i],Species3 , &lifespan_S3);
     species3=create_taxon(Species3 , lifespan_S3);
     printf("Memory allocated is %p\n",Species3);
-    
+    link_parent(species2 ,species3 );
 
     i++;
     char Species4[100];
     int lifespan_S4;
     read_taxon_info(elements[i],Species4 , &lifespan_S4);
     species4=create_taxon(Species4 , lifespan_S4);
-    printf("Memory allocated is %p\n",Species4);  
+    printf("Memory allocated is %p\n",Species4); 
+    link_parent(species3 ,species4 ); 
 
-    link_parent(family ,Genera1 );
-    link_parent(Genera1 ,Genera2 );
-    link_parent(Genera2 ,species1 );
-    link_parent(species1 ,species2 );
-    link_parent(species2 ,species3 );
-    link_parent(species3 ,species4 );
-                               
+                       
     print_taxonomy(family);
 
     Taxon *arr[7]={family , Genera1 , Genera2 ,species1, species2, species3, species4 };
 
     free_tree(arr , 7);
-
-    
-
-    
-    
-    
+  
     return 0;
 }
