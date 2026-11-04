@@ -38,22 +38,22 @@ void link_parent(Taxon *child, Taxon *parent){
 }
 void print_taxonomy(Taxon *family){
     printf("This is family \n");
-    printf("The family 's name is %s",family->name);
-    printf("The family 's name is %d",family->lifespan);
+    printf("The family 's name is %s\n",family->name);
+    printf("The family 's lifespan is %d\n",family->lifespan);
     printf("This is Genera 1 \n");
     printf("The Genera 1  name is %s\n",family->parent_group->name);
-    printf("The Genera 1 name is %d\n",family->parent_group->lifespan);
+    printf("The Genera 1 lifespan is %d\n",family->parent_group->lifespan);
     printf("This is Genera 2 \n");
     printf("The Genera 2 name is %s\n",family->parent_group->parent_group->name);
-    printf("The Genera 2 name is %d\n",family->parent_group->parent_group->lifespan);
+    printf("The Genera 2 lifespan is %d\n",family->parent_group->parent_group->lifespan);
 
     printf("This is Species 1 \n");
     printf("The Species 1 name is %s\n",family->parent_group->parent_group->parent_group->name);
-    printf("TheSpecies 1 name is %d\n",family->parent_group->parent_group->parent_group->lifespan);
+    printf("TheSpecies 1 lifespan is %d\n",family->parent_group->parent_group->parent_group->lifespan);
  
     printf("This is Species 2 \n");
     printf("The Species 2 name is %s\n",family->parent_group->parent_group->parent_group->parent_group->name);
-    printf("TheSpecies 2 name is %d\n",family->parent_group->parent_group->parent_group->parent_group->lifespan);
+    printf("TheSpecies 2 lifespan is %d\n",family->parent_group->parent_group->parent_group->parent_group->lifespan);
 
     printf("This is Species 3 \n");
     printf("The Species 3 name is %s\n",family->parent_group->parent_group->parent_group->parent_group->parent_group->name);
@@ -61,7 +61,7 @@ void print_taxonomy(Taxon *family){
 
     printf("This is Species 4\n");
     printf("The Species 3 name is %s\n",family->parent_group->parent_group->parent_group->parent_group->parent_group->parent_group->name);
-    printf("TheSpecies 3 name is %d\n",family->parent_group->parent_group->parent_group->parent_group->parent_group->parent_group->lifespan);
+    printf("TheSpecies 3 lifespan is %d\n",family->parent_group->parent_group->parent_group->parent_group->parent_group->parent_group->lifespan);
 }
     
 
