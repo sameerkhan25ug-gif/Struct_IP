@@ -104,7 +104,7 @@ int main() {
     char genera2[100];
     int lifespan_G2;
     read_taxon_info(elements[i],genera2 , &lifespan_G2 );
-    Genera2=create_taxon(genera1 , lifespan_G2);
+    Genera2=create_taxon(genera2 , lifespan_G2);
     printf("Memory allocated is %p\n",Genera2);
     link_parent(Genera1 ,Genera2 );
     
